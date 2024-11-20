@@ -1,0 +1,11 @@
+normalizedtime,stimuli,gazex,gazey,diametermm,blink,saccade,fixation
+1,input-1,5,1,5,0,0,0
+2,input-1,5,5,1,1,1,1
+3,input-1,1,5,6,1,1,1
+4,outcome-reward,5,3,7,1,1,1
+5,outcome-reward,4,5,5,0,0,0
+6,outcome-reward,1,1,6,1,1,1
+7,outcome-noninst,2,3,6,0,0,0
+8,outcome-inst,3,5,3,1,1,1
+9,input-1,5,4,5,1,1,1
+10,input-1,5,5,2,1,1,1
