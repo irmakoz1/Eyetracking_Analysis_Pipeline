@@ -9,12 +9,13 @@
 
 clear;clc;close all;
 % Add Edf2mat toolbox
-addpath('E:\0024_CBT_UNIGE_VUILLEUMIER\Curiosity\eye_tracking\edf-converter-master');
+PATH="your_workspace_path"
+addpath(PATH);
 
 
 %% import data
 
-subpath     = 'E:\0024_CBT_UNIGE_VUILLEUMIER\Curiosity\subject_data\CURIOSITY008NG';
+subpath     = 'you_data_path';
 edf{1, 1}   = Edf2Mat(fullfile(subpath,'008NG_1.edf'));
 subject     = 1;
 run         = 1;
@@ -58,7 +59,6 @@ recordingConfig = cellfun(@(x) strncmp(x, infoName, numel(infoName)), currData.E
 expression = '\d{3,4}'; % RECCFG CR 500 2 1 R --> e.g. expression for 500Hz
 matchStr = regexp(currData.Events.Messages.info{recordingConfig}, expression, 'match');
 frequency = str2double(matchStr{1});
-
 
 
 
@@ -156,14 +156,14 @@ triggerRange.out(1,:) = tmp_out;
 triggerRange.out(2,:) = tmp_out+2.5*500;
 
 
-% Inputs
+% Inputs->Conditions
 door                    = find(CuriosityTask.Trial==1); % Door choice only
 inst_ignored            = find(CuriosityTask.Trial==2 & ~isnan(CuriosityTask.Response) & CuriosityTask.Response<3); % instrumental curiosity trial
 inst_chosen             = find(CuriosityTask.Trial==2 & ~isnan(CuriosityTask.Response) & CuriosityTask.Response==3); % instrumental curiosity trial
 noninst_ignored         = find(CuriosityTask.Trial==3 & ~isnan(CuriosityTask.Response) & CuriosityTask.Response<4); % instrumental curiosity trial
 noninst_chosen          = find(CuriosityTask.Trial==3 & ~isnan(CuriosityTask.Response) & CuriosityTask.Response==4); % instrumental curiosity trial
 
-% Outcomes
+% Outcomes->Conditions
 reward                  = find(CuriosityTask.Reward==1); % Door choice only 
 noreward                = find(CuriosityTask.Reward==2); % Door choice only 
 instOut                 = find(CuriosityTask.InstrumentalCuriosity==1); % Door choice only 
